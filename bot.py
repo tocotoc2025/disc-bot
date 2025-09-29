@@ -1,5 +1,6 @@
 import discord, os
 import app
+import eco
 from discord.ext import commands
 from dotenv import load_dotenv
 
@@ -27,5 +28,24 @@ async def heh(ctx, count_heh = 5):
 async def passwords(ctx, largo=25):
     data = app.passworsd_generator(largo)
     await ctx.send(f"🔒 contraseña generada: {data}")
+
+@bot.command(name="description")
+async def descri(ctx):
+    await ctx.send(f"Soy un bot el cual puede reir, mandar memes, ecotips y contraseñas")
+
+@bot.command(name="meme")
+async def meme(ctx):
+    picture = app.meme()
+    await ctx.send(file=picture)
+
+@bot.command(name="memes")
+async def memes(ctx):
+    picture = app.memes()
+    await ctx.send(file=picture)
+
+@bot.command(name = "ecotips")
+async def ecotips(ctx):
+    tips = eco.etiqueta_reutilizar()
+    await ctx.send(embed=tips)
 
 bot.run(token)
