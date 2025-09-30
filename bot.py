@@ -21,9 +21,10 @@ async def hello(ctx):
     await ctx.send(f'Hola, soy un bot {bot.user}!')
 
 @bot.command(name="suma")
-async def hello(ctx, *args):
-    await ctx.send(f'el total es: {sum(args)}')
-
+async def sumar(ctx, *args):
+    total = sum(int(x) for x in args)
+    await ctx.send(f'El total es: {total}')
+    
 @bot.command()
 async def heh(ctx, count_heh = 5):
     await ctx.send("he" * count_heh)
