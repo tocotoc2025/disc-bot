@@ -20,6 +20,10 @@ async def on_ready():
 async def hello(ctx):
     await ctx.send(f'Hola, soy un bot {bot.user}!')
 
+@bot.command(name="suma")
+async def hello(ctx, *args):
+    await ctx.send(f'el total es: {sum(args)}')
+
 @bot.command()
 async def heh(ctx, count_heh = 5):
     await ctx.send("he" * count_heh)
